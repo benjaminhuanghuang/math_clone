@@ -3,6 +3,7 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app
 from app import login_manager, mongo
 from bson.objectid import ObjectId
+from app.permission_control.permission import Permission
 
 class User():
     """
@@ -32,7 +33,11 @@ class User():
 
     @property
     def is_admin(self):
-        return self.user_data["role"] < 1
+        return self.user_data["role"] >= Permission.ADMINISTER
+
+    @property
+    def role(self):
+        return self.user_data["role"]
 
     @property
     def username(self):
