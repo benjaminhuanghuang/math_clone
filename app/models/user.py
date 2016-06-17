@@ -103,6 +103,13 @@ class User():
         return check_password_hash(hash_pass, password)
 
 
+    @staticmethod
+    def get_all_users():
+        cursor = mongo.db.users.find()
+
+        return [u for u in cursor]
+
+
 
 
 

@@ -76,6 +76,9 @@ def create_app(config_name):
     from .practice import practice as practice_blueprint
     app.register_blueprint(practice_blueprint, url_prefix='/practice')
 
+    from .management import management as management_blueprint
+    app.register_blueprint(management_blueprint, url_prefix='/management')
+
     from .diagnostic import diagnostic as diagnostic_blueprint
     app.register_blueprint(diagnostic_blueprint, url_prefix='/diagnostic')
 

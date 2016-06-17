@@ -3,7 +3,7 @@ from app.models.user import User
 
 api = Blueprint('api', __name__)
 
-from . import errors, statements
+from . import errors, user
 
 
 @api.before_request

@@ -6,17 +6,23 @@ from app.models.user import User
 @api.route('/hello', methods=['GET'])
 def hello():
     return jsonify({'status': 'ok'})
-#
-# @api.route('/statements/list/<user_name>', methods=['GET'])
-# def list(user_name):
-#     if User.is_user_name_existed(user_name):
-#         return bad_request('User {} does not exist.'.format(user_name))
-#
-#     if user_name != g.current_user.user_name:
-#         return forbidden('You cannot use this API.')
-#
-#
-#     return jsonify({'status': 'ok'})
+
+@api.route('/getuserlist', methods=['GET'])
+def get_user_list():
+
+
+
+    return jsonify({'status': 'ok'})
+
+@api.route('/getuserinfo/<user_name>', methods=['GET'])
+def get_user_info():
+
+    return jsonify({'status': 'ok'})
+
+@api.route('/updateuserinfo/<user_name>', methods=['PUT'])
+def update_user_info():
+
+    return jsonify({'status': 'ok'})
 #
 # @api.route('/statements/deposit', methods=['POST'])
 # def deposit():

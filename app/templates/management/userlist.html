@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <h2>User Management </h2>
+    <div class="container">
+        {% for user in users %}
+            <li>{{ user.name}} - {{ user.email}}
+        {% else %}
+            <li><em>Unbelievable. No users here so far</em>
+        {% endfor %}
+    </div>
+{% endblock %}

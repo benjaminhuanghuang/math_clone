@@ -7,6 +7,7 @@ manager = Manager(app)
 server = Server(port=9527)
 manager.add_command("run", server)
 
+
 @manager.command
 def test():
     from subprocess import call
