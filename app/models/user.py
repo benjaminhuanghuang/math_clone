@@ -16,19 +16,21 @@ class User():
 
         '''
         self.user_data = user_data
-
+    @property
     def is_authenticated(self):
         return True
-
+    @property
     def is_active(self):
         return True
 
+    @property
     def is_anonymous(self):
         return False
 
     def get_id(self):
         return unicode(self.user_data["_id"])
 
+    @property
     def is_admin(self):
         return self.user_data["role"] < 1
 
