@@ -1,0 +1,115 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+    {% if title %}
+        Math Clone - {{ title }}
+    {% else %}
+        REST Bank
+    {% endif %}
+{% endblock %}
+
+{% block head %}
+    {{ super() }} {# render the contents  defined in the parent templat bootstrap/base.html #}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+{% endblock %}
+
+{# menu bar #}
+{% block navbar %}
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('home.index') }}">Math Clone</a>
+            </div>
+            {% if current_user.is_authenticated %}
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Exercise<b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url_for('practice.courses') }}">Courses</a></li>
+                                <li><a href="{{ url_for('practice.assignment') }}">Assignment</a></li>
+                                <li><a href="">Diagnostic Test</a></li>
+                                <li><a href="">Sleep</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Report<b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url_for('practice.courses') }}">Activate Report</a></li>
+                                <li><a href="{{ url_for('practice.assignment') }}">Token Report</a></li>
+                            </ul>
+                        </li>
+                        {% if current_user.is_admin %}
+                            <li>
+                                <a href="">Management</a>
+                            </li>
+                        {% endif %}
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Diagnostic<b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url_for('diagnostic.index') }}">Diagnostic1</a></li>
+                                <li><a href="">Test Group 2</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if not current_user.is_authenticated %}
+                            <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                        {% else %}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img
+                                        src=""> {{ current_user.username }} <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                                    <li><a href="">Drop Account</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="content_body_wrapper">
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {# content #}
+            {% block page_content %}
+            {% endblock %}
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">&copy; Copyright 2010 by <a
+                    href="https://aloneplayer.wordpress.com/">BenjaminHuang</a>.</p>
+        </div>
+    </footer>
+{% endblock %}
+
+
+
+{% block scripts %}
+    {{ super() }} {# include the js defined in the parent templat bootstrap/base.html#}
+    {{ moment.include_moment() }} {# include the js defined moment #}
+{% endblock %}
