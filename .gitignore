@@ -53,3 +53,4 @@ venv
 
 # Test report
 /cover/
+/app/static/bower_components/

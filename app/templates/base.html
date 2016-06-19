@@ -10,8 +10,8 @@
 
 {% block head %}
     {{ super() }} {# render the contents  defined in the parent templat bootstrap/base.html #}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layout.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 {% endblock %}
 
@@ -51,14 +51,14 @@
                             </ul>
                         </li>
                         {% if current_user.is_admin %}
-                             <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Management<b
-                                    class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{ url_for('management.usermanagement') }}">User Management</a></li>
-                                <li><a href="">Test Group 2</a></li>
-                            </ul>
-                        </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Management<b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ url_for('management.usermanagement') }}">User Management</a></li>
+                                    <li><a href="">Test Group 2</a></li>
+                                </ul>
+                            </li>
                         {% endif %}
 
                         <li class="dropdown">
@@ -66,7 +66,8 @@
                                     class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ url_for('diagnostic.makecrash') }}">Diagnostic1</a></li>
-                                <li><a href="">Test Group 2</a></li>
+                                <li><a href="{{ url_for('diagnostic.bottle_process_demo') }}">Bottle Process Demo</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -117,4 +118,5 @@
 {% block scripts %}
     {{ super() }} {# include the js defined in the parent templat bootstrap/base.html#}
     {{ moment.include_moment() }} {# include the js defined moment #}
+    <script type="text/javascript" src="/static/bower_components/angular/angular.js"></script>
 {% endblock %}

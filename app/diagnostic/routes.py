@@ -7,5 +7,7 @@ def makecrash():
     return render_template('diagnostic/index.html')
 
 
-
+@diagnostic.route('/bottleprocessdemo')
+def bottle_process_demo():
+    return render_template('diagnostic/bottle-process-demo.html')
 

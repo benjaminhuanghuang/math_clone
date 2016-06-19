@@ -1,0 +1,98 @@
+.raiseBottle{
+    position:relative;
+    display: inline-block;
+    float: left;
+    width:90px;
+    height:260px;
+}
+.middle, .bottle .flask-inner, .bottle .water,  .bottle .top, .bottle .bottom {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.mask{
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width:140px; height:260px;
+    z-index: 2;
+}
+
+.bottle {
+    z-index: 1;
+    opacity: 1;
+    background: white;
+    /*border-radius: 100px/10px;*/
+    background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            right bottom,
+            color-stop(0.05, #C9C9C9),
+            color-stop(1, #FFFFFF),
+            color-stop(1, #FFFFFF)
+    );
+    background-image: -o-linear-gradient(right, #C9C9C9 5%, #FFFFFF 100%, #FFFFFF 100%);
+    background-image: -moz-linear-gradient(right, #C9C9C9 5%, #FFFFFF 100%, #FFFFFF 100%);
+    background-image: -webkit-linear-gradient(right, #C9C9C9 5%, #FFFFFF 100%, #FFFFFF 100%);
+    background-image: -ms-linear-gradient(right, #C9C9C9 5%, #FFFFFF 100%, #FFFFFF 100%);
+    background-image: linear-gradient(to right, #C9C9C9 5%, #FFFFFF 100%, #FFFFFF 100%);
+}
+.bottle .flask-inner, .bottle .water {
+    width: 140px;
+    height: 252px;
+    background: inherit;
+    /*border-radius: 80px;*/
+    opacity: 0.2;
+    /*border-top-left-radius: 0px;*/
+    /*border-top-right-radius: 0px;*/
+
+}
+.bottle .flask-inner, .bottle .water {
+    width: 130px;
+    height: 240px;
+    background: #BBBBBB;
+    opacity: 0.2;
+    /*border-radius: 80px;*/
+    /*border-top-left-radius: 0px;*/
+    /*border-top-right-radius: 0px;*/
+}
+.bottle .water {
+    background: transparent;
+    opacity: 0.8;
+    overflow: hidden;
+}
+.bottle .waterLevelTop {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: 10px;
+    min-height: 10px;
+    bottom: 0px;
+    border-radius:100px/10px;
+    background: rgb(6,109,171); /* Old browsers */
+    background: -moz-linear-gradient(left,  rgba(63, 148, 68,1) 0%, rgba(102,188,76,1) 69%, rgba(168, 207, 141,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(63, 148, 68,1)), color-stop(69%,rgba(102,188,76,1)), color-stop(100%,rgba(168, 207, 141,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  rgba(63, 148, 68,1) 0%,rgba(102,188,76,1) 69%,rgba(168, 207, 141,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  rgba(63, 148, 68,1) 0%,rgba(102,188,76,1) 69%,rgba(168, 207, 141,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  rgba(63, 148, 68,1) 0%,rgba(102,188,76,1) 69%,rgba(168, 207, 141,1) 100%); /* IE10+ */
+    background: linear-gradient(to right,  rgba(63, 148, 68,1) 0%,rgba(102,188,76,1) 69%,rgba(168, 207, 141,1) 100%); /* W3C */
+}
+.bottle .waterLevel {
+    left: 0;
+    right: 0;
+    margin: auto;
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: 10px;
+    bottom: 0px;
+    background: rgba( 168, 207, 141,1);
+    border-radius: 100px/10px;
+}
+/*flask*/

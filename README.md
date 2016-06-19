@@ -66,3 +66,15 @@ Check library version installed:
     
     # install Flask-PyMongo
     
+**Step 5**: Setup Node 
+    $ npm init
+    
+    
+**Step 6**: Setup bower
+    $ bower init
+    change bower's default components folder?
+        Create a .bowerrc file in the root and add following content
+            {
+                "directory" : "public/components"
+            }
+    
