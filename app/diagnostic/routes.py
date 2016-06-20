@@ -13,5 +13,5 @@ def bottle_process_demo():
 
 @diagnostic.route('/angulrauthdemo')
 def angular_auth_demo():
-    return render_template('diagnostic/angular_auth_demo.html.html')
+    return render_template('diagnostic/angular_auth_demo.html')
 
