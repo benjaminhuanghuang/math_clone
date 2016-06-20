@@ -9,5 +9,9 @@ def makecrash():
 
 @diagnostic.route('/bottleprocessdemo')
 def bottle_process_demo():
-    return render_template('diagnostic/bottle-process-demo.html')
+    return render_template('diagnostic/bottle_process_demo.html')
+
+@diagnostic.route('/angulrauthdemo')
+def angular_auth_demo():
+    return render_template('diagnostic/angular_auth_demo.html.html')
 

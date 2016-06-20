@@ -1,10 +1,6 @@
 {% extends "base.html" %}
-{% block head %}
-    {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bottle-process.css') }}">
-{% endblock %}
 {% block page_content %}
-    <h4>Demo for bottle process directive</h4>
+    <h4>Demo for angular route auth</h4>
     <div class="container" ng-app="BottleProcessDemoApp">
         <div class="raiseBottle">
             <bottle-process per="0.5"></bottle-process>

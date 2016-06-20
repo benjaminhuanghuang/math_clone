@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bottle-process.css') }}">
+{% endblock %}
+{% block page_content %}
+    <h4>Demo for bottle process directive</h4>
+    <div class="container" ng-app="BottleProcessDemoApp">
+        <div class="raiseBottle">
+            <bottle-process per="0.5"></bottle-process>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }} {# include the js defined in the parent templat base.html#}
+    <script type="text/javascript" src="/static/bower_components/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript" src="/static/directive/bottle-process/app/script/bottle-process.js"></script>
+    <script type="text/javascript" src="/static/js/app/bottle_process_demo.js"></script>
+{% endblock %}
