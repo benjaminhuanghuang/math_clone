@@ -1,14 +1,20 @@
 {% extends "base.html" %}
 {% block page_content %}
     <h4>Demo for angular route auth</h4>
-    <div class="container" ng-app="BottleProcessDemoApp">
-        <div class="raiseBottle">
-            <bottle-process per="0.5"></bottle-process>
+    <div class="container" ng-app="AngularAuthDemoApp">
+        <div class="row">
+            <a ui-sref=".anonymous" class="btn btn-primary">Anonymouse</a>
+            <a ui-sref=".user" class="btn btn-danger">User</a>
+            <a ui-sref=".admin" class="btn btn-danger">Admin</a>
         </div>
+
+        <div ui-view></div>
     </div>
 {% endblock %}
 
 {% block scripts %}
     {{ super() }} {# include the js defined in the parent templat base.html#}
-    <script type="text/javascript" src="/static/js/app/angular_auto_demo.js"></script>
+    <script type="text/javascript"
+            src="/static/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="/static/app/angular_auth_demo/angular_auth_demo.js"></script>
 {% endblock %}
