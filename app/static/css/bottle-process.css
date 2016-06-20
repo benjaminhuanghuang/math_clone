@@ -1,3 +1,6 @@
+body{
+    background:white;
+}
 .raiseBottle{
     position:relative;
     display: inline-block;
@@ -71,17 +74,17 @@
     content: "";
     position: absolute;
     width: inherit;
-    height: 10px;
-    min-height: 10px;
+    height: 0px;
+    min-height: 0px;
     bottom: 0px;
     border-radius:100px/10px;
-    background: rgb(6,109,171); /* Old browsers */
-    background: -moz-linear-gradient(left,  rgba(63, 148, 68,1) 0%, rgba(102,188,76,1) 69%, rgba(168, 207, 141,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(63, 148, 68,1)), color-stop(69%,rgba(102,188,76,1)), color-stop(100%,rgba(168, 207, 141,1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left,  rgba(63, 148, 68,1) 0%,rgba(102,188,76,1) 69%,rgba(168, 207, 141,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(left,  rgba(63, 148, 68,1) 0%,rgba(102,188,76,1) 69%,rgba(168, 207, 141,1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(left,  rgba(63, 148, 68,1) 0%,rgba(102,188,76,1) 69%,rgba(168, 207, 141,1) 100%); /* IE10+ */
-    background: linear-gradient(to right,  rgba(63, 148, 68,1) 0%,rgba(102,188,76,1) 69%,rgba(168, 207, 141,1) 100%); /* W3C */
+    background: rgb(247,202,24); /* Old browsers */
+    background: -moz-linear-gradient(left,  rgba(255,164,0,1) 0%, rgba(247,202,24,1) 69%, rgba(245,215,110,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,164,0,1)), color-stop(69%,rgba(247,202,24,1)), color-stop(100%,rgba(245,215,110,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  rgba(255,164,0,1) 0%,rgba(247,202,24,1) 69%,rgba(245,215,110,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  rgba(255,164,0,1) 0%,rgba(247,202,24,1) 69%,rgba(245,215,110,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  rgba(255,164,0,1) 0%,rgba(247,202,24,1) 69%,rgba(245,215,110,1) 100%); /* IE10+ */
+    background: linear-gradient(to right,  rgba(255,164,0,1) 0%,rgba(247,202,24,1) 69%,rgba(245,215,110,1) 100%); /* W3C */
 }
 .bottle .waterLevel {
     left: 0;
@@ -92,7 +95,7 @@
     width: inherit;
     height: 10px;
     bottom: 0px;
-    background: rgba( 168, 207, 141,1);
+    background: rgba( 245,215,110,1);
     border-radius: 100px/10px;
 }
-/*flask*/
+/*flask here*/

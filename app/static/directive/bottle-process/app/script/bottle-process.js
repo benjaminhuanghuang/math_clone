@@ -1,7 +1,7 @@
 angular.module('bottleProcess', [])
-    .controller('MainCtrl', ['$scope', function ($scope) {
-    }])
+    // directive name should be camel case!!!!
     .directive('bottleProcess', function () {
+        console.log("bottle-process directive");
         function link(scope, element, attrs) {
             var maxWaterHeight = (attrs.per) * 400;
             var waterHeight = 0.6; // from 0 - 1.0
