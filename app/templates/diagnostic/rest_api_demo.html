@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block page_content %}
-    <h4>Demo for angular route auth</h4>
+    <h4>Demo for REST API calling</h4>
     <div class="container" ng-app="RESTAPIDemo" ng-controller="RESTAPIDemoController">
         <div class="row">
             <a class="btn btn-primary" ng-click="requestToken()">Request Token</a>
@@ -8,11 +8,15 @@
             <a class="btn btn-danger" ng-click="accessPrivateResource()">Access private resource</a>
             <a class="btn btn-danger" ng-click="accessAdminResource()">Access admin resource</a>
         </div>
-        <div ui-view></div>
+        <div>
+            {% raw %}
+            {{apiReturn}}
+            {% endraw %}
+        </div>
     </div>
 {% endblock %}
 
 {% block scripts %}
     {{ super() }} {# include the js defined in the parent templat base.html#}
-    <script type="text/javascript" src="/static/app/angular_auth_demo/rest_api_demo.js"></script>
+    <script type="text/javascript" src="/static/app/rest_api_demo/rest_api_demo.js"></script>
 {% endblock %}

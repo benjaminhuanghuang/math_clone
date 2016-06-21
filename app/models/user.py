@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import current_app
 # Python module which helps securely sign cookies
-from itsdangerous import URLSafeTimedSerializer
+from itsdangerous import URLSafeTimedSerializer, TimedJSONWebSignatureSerializer
 from app import mongo
 from bson.objectid import ObjectId
 from app.permission_control.permission import Permission
@@ -41,7 +41,7 @@ class User():
         Encode a secure token for cookie
         """
         data = [str(self.user_data["_id"]), self.user_data["password"], self.user_data["role"]]
-        login_serializer = URLSafeTimedSerializer(current_app.config["SECRET_KEY"],
+        login_serializer = TimedJSONWebSignatureSerializer(current_app.config["SECRET_KEY"],
                                                   expires_in=current_app.config["COOKIE_DURATION"])
         return login_serializer.dumps(data)
 

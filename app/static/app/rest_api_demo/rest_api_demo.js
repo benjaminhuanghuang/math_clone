@@ -1,16 +1,33 @@
 angular.module('RESTAPIDemo', []);
 
-angular.module('RESTAPIDemo').controller('RESTAPIDemoController', function ($scope) {
+angular.module('RESTAPIDemo').controller('RESTAPIDemoController', function ($scope, $http) {
     $scope.requestToken = function () {
-
+        var url = "/auth/getauthtoken";
+        $http.get(url).success(function (data) {
+            $scope.apiReturn = data;
+            console.log($scope.apiReturn);
+        });
     };
-    $scope.accessPublicResource = function () {
 
+    $scope.accessPublicResource = function () {
+        var url = '/getauthtoken'
+        $http.get(url).success(function (data) {
+
+            $scope.apiReturn.ii = data;
+        });
     };
     $scope.accessPrivateResource = function () {
+        var url = '/getauthtoken'
+        $http.get(url).success(function (data) {
 
+            $scope.apiReturn.ii = data;
+        });
     };
     $scope.accessAdminResource = function () {
+        var url = '/getauthtoken'
+        $http.get(url).success(function (data) {
 
+            $scope.apiReturn = data;
+        });
     };
 });
