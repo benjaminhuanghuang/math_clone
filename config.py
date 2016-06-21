@@ -5,6 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     # used for session
     SECRET_KEY = "*9527*"
+    COOKIE_DURATION = 60*3
 
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587

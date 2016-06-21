@@ -1,5 +1,5 @@
 from flask import Blueprint, request, g
-from app.models.user import User
+from app.permission_control.falsk_login_helper import load_token
 
 api = Blueprint('api', __name__)
 
@@ -13,7 +13,7 @@ def before_api_request():
     token = request.json.get('token')
     if not token:
         return errors.unauthorized('Authentication token not provided.')
-    user = User.validate_auth_token(token)
+    user = load_token(token)
     if not user:
         return errors.unauthorized('Invalid authentication token.')
     g.current_user = user

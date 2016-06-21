@@ -1,9 +1,11 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app
-from app import login_manager, mongo
+# Python module which helps securely sign cookies
+from itsdangerous import URLSafeTimedSerializer
+from app import mongo
 from bson.objectid import ObjectId
 from app.permission_control.permission import Permission
+
 
 class User():
     """
@@ -12,14 +14,17 @@ class User():
         get_id() must return a unicode that uniquely identifies the user
         Flask-Login use user name (account name) as the identity of user
     """
+
     def __init__(self, user_data):
         '''
 
         '''
         self.user_data = user_data
+
     @property
     def is_authenticated(self):
         return True
+
     @property
     def is_active(self):
         return True
@@ -30,6 +35,15 @@ class User():
 
     def get_id(self):
         return unicode(self.user_data["_id"])
+
+    def get_auth_token(self):
+        """
+        Encode a secure token for cookie
+        """
+        data = [str(self.user_data["_id"]), self.user_data["password"], self.user_data["role"]]
+        login_serializer = URLSafeTimedSerializer(current_app.config["SECRET_KEY"],
+                                                  expires_in=current_app.config["COOKIE_DURATION"])
+        return login_serializer.dumps(data)
 
     @property
     def is_admin(self):
@@ -46,18 +60,6 @@ class User():
     @staticmethod
     def validate_login(password_hash, password):
         return check_password_hash(password_hash, password)
-
-    @staticmethod
-    def validate_auth_token(token):
-        s = Serializer(current_app.config['SECRET_KEY'])
-        try:
-            data = s.loads(token)
-        except:
-            return None
-        id = data.get('user')
-        if id:
-            return User.get_user_by_id(id)
-        return None
 
     @staticmethod
     def hash_password(password):
@@ -107,24 +109,8 @@ class User():
         hash_pass = user["password"]
         return check_password_hash(hash_pass, password)
 
-
     @staticmethod
     def get_all_users():
         cursor = mongo.db.users.find()
 
         return [u for u in cursor]
-
-
-
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    '''
-    To be used load user object from session when access URL
-    :param user_id:  Should be the same as user.get_id()
-    '''
-    user = User.get_user_by_id(user_id)
-    if user:
-        return User(user)
-    return None
