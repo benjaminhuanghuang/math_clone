@@ -1,6 +1,6 @@
 import os
 from flask import render_template, current_app, request, redirect, url_for, flash, session, send_from_directory
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user
 from . import home
 from .forms import LoginForm
 from app.models.user import User
@@ -15,6 +15,10 @@ def favicon():
 
 @home.route('/', methods=['GET', 'POST'])
 def index():
+    '''
+    User will log in on homepage
+    :return:
+    '''
     form = LoginForm()
     if form.validate_on_submit():
         user = User.get_user_by_name(form.user_name.data)

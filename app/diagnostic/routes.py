@@ -15,3 +15,8 @@ def bottle_process_demo():
 def angular_auth_demo():
     return render_template('diagnostic/angular_auth_demo.html')
 
+
+@diagnostic.route('/restapidemo')
+def rest_api_demo():
+    return render_template('diagnostic/rest_api_demo.html')
+

@@ -4,8 +4,6 @@ from flask import current_app
 # Python module which helps securely sign cookies
 from itsdangerous import URLSafeTimedSerializer
 
-login_serializer = URLSafeTimedSerializer(current_app.config["SECRET_KEY"])
-
 @login_manager.user_loader
 def load_user(user_id):
     '''
@@ -44,6 +42,7 @@ def load_token(token):
 
     #Decrypt the Security Token, data = [username, hashpass]
     try:
+        login_serializer = URLSafeTimedSerializer(current_app.config["SECRET_KEY"])
         data = login_serializer.loads(token, max_age=max_age)
     except:
         return None
