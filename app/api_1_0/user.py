@@ -1,11 +1,11 @@
-from flask import jsonify, g
+from flask import jsonify
+from flask_login import current_user
 from . import api
-from .errors import forbidden, bad_request
-from app.models.user import User
 
-@api.route('/hello', methods=['GET'])
-def hello():
-    return jsonify({'status': 'ok'})
+
+@api.route('/privatehello', methods=['GET'])
+def private_hello():
+    return jsonify("private hello" + current_user.username)
 
 @api.route('/getuserlist', methods=['GET'])
 def get_user_list():

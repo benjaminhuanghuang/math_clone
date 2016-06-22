@@ -17,10 +17,10 @@ angular.module('RESTAPIDemo').controller('RESTAPIDemoController', function ($sco
         });
     };
     $scope.accessPrivateResource = function () {
-        var url = '/getauthtoken'
+        var url = '/api/1.0/privatehello'
         $http.get(url).success(function (data) {
 
-            $scope.apiReturn.ii = data;
+            $scope.apiReturn = data;
         });
     };
     $scope.accessAdminResource = function () {
