@@ -10,10 +10,10 @@ angular.module('RESTAPIDemo').controller('RESTAPIDemoController', function ($sco
     };
 
     $scope.accessPublicResource = function () {
-        var url = '/getauthtoken'
+        var url = '/api/hello'
         $http.get(url).success(function (data) {
 
-            $scope.apiReturn.ii = data;
+            $scope.apiReturn = data;
         });
     };
     $scope.accessPrivateResource = function () {

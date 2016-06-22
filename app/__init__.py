@@ -63,15 +63,19 @@ def create_app(config_name):
     bootstrap.init_app(app)
     moment.init_app(app)
 
-    # register blue prints for routers
+    # register blue prints for api
+    from .api_1_0 import api as api_blueprint
+    app.register_blueprint(api_blueprint, url_prefix='/api/1.0')
+
+    from .api_public import api_public as api_public_blueprint
+    app.register_blueprint(api_public_blueprint, url_prefix='/api')
+
+    # register blue print for routers
     from .home import home as home_blueprint
     app.register_blueprint(home_blueprint)
 
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
-
-    from .api_1_0 import api as api_blueprint
-    app.register_blueprint(api_blueprint, url_prefix='/api/1.0')
 
     from .practice import practice as practice_blueprint
     app.register_blueprint(practice_blueprint, url_prefix='/practice')
