@@ -5,6 +5,7 @@ from flask import jsonify
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth
 from forms import LoginForm
+import jsonpickle
 
 import bcrypt
 
@@ -70,8 +71,14 @@ def logout():
     return redirect(url_for('home.index'))
 
 
-@auth.route('/getauthtoken')
-@login_required
+@auth.route('/getauthtoken', methods=['POST'])
+# @login_required
 def get_auth_token():
-    token = current_user.get_auth_token()
-    return jsonify({'token': token.decode('ascii')})
+    parameter = jsonpickle.decode(request.data)
+    user = User.get_user_by_name(parameter.get("username", ""))
+    if user and User.verify_password(user, parameter.get("password", "")):
+        user_obj = User(user)
+        token = user_obj.get_auth_token()
+        return jsonify({'token': token.decode('ascii')})
+    else:
+        return jsonify({'token': ""})

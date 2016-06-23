@@ -1,10 +1,16 @@
 angular.module('RESTAPIDemo', []);
 
 angular.module('RESTAPIDemo').controller('RESTAPIDemoController', function ($scope, $http) {
+    $scope.token;
     $scope.requestToken = function () {
         var url = "/auth/getauthtoken";
-        $http.get(url).success(function (data) {
+        var data={
+            username:"ben",
+            password:"123"
+        }
+        $http.post(url, data ).success(function (data) {
             $scope.apiReturn = data;
+            $scope.token = data.token;
             console.log($scope.apiReturn);
         });
     };
@@ -17,8 +23,11 @@ angular.module('RESTAPIDemo').controller('RESTAPIDemoController', function ($sco
         });
     };
     $scope.accessPrivateResource = function () {
+        //$scope.token  ????
         var url = '/api/1.0/privatehello'
-        $http.get(url).success(function (data) {
+        var config = {};
+        config.headers['Token'] = $scope.token;
+        $http.get(url, config).success(function (data) {
 
             $scope.apiReturn = data;
         });
