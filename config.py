@@ -5,6 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     # used for session
     SECRET_KEY = "*9527*"
+    COOKIE_DURATION = 60*30   # seconds
     JWT_EXPIRATION_DELTA = 60*30   # seconds
 
     MAIL_SERVER = 'smtp.googlemail.com'
