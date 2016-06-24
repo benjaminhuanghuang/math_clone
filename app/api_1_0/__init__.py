@@ -7,11 +7,14 @@ from app.permission_control.falsk_login_helper import load_token
 
 api = Blueprint('api', __name__)
 
-from . import errors, user
+from . import errors, user, auth
 
 
 @api.before_request
 def before_api_request():
+    if request.path == "/api/1.0/tokenauth":
+            return None
+
     if request.json is None:
         return errors.bad_request('Invalid JSON in body.')
     token = request.json.get('token')

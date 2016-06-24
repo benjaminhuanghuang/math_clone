@@ -3,7 +3,8 @@ angular.module('RESTAPIDemo', []);
 angular.module('RESTAPIDemo').controller('RESTAPIDemoController', function ($scope, $http) {
     $scope.token;
     $scope.requestToken = function () {
-        var url = "/auth/getauthtoken";
+        //var url = "/auth/getauthtoken";
+        var url = "/api/1.0/tokenauth";
         var data={
             username:"ben",
             password:"123"

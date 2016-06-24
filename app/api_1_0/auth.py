@@ -20,8 +20,8 @@ def token_auth():
     token_payload = {'user_name': user_obj.username,
                      'user_id':user_obj.id,
                      'role': user_obj.role,
-                     'utc_exp': datetime.utcnow() + timedelta(minutes=current_app.config.get('COOKIE_DURATION', 60)),
-                     'utc_now': datetime.utcnow()}
+                     'utc_exp': (datetime.utcnow() + timedelta(minutes=current_app.config.get('COOKIE_DURATION', 60))).isoformat(),
+                     'utc_now': datetime.utcnow().isoformat()}
 
     token = jwt.encode(token_payload, current_app.config.get('SECRET_KEY', 'secret'))
     response = make_response(token)
