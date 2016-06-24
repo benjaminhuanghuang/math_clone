@@ -19,6 +19,7 @@ Jinja2==2.8
 Flask-Moment==0.3.0
 
 jsonpickle
+flask-jwt
 
 # Database
 pymongo>=3.2.2
