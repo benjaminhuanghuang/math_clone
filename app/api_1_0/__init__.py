@@ -1,4 +1,8 @@
-from flask import Blueprint, request, g
+from flask import Blueprint, request, g, current_app
+import jwt
+
+from app.models.user import User
+
 from app.permission_control.falsk_login_helper import load_token
 
 api = Blueprint('api', __name__)
@@ -13,7 +17,10 @@ def before_api_request():
     token = request.json.get('token')
     if not token:
         return errors.unauthorized('Authentication token not provided.')
-    user = load_token(token)
+
+    token_payload = jwt.decode(token, current_app.config.get('SECRET_KEY'))
+    user_id = token_payload.get("user_id", "")
+    user = User.get_user_by_id(user_id)
     if not user:
         return errors.unauthorized('Invalid authentication token.')
     g.current_user = user
