@@ -26,9 +26,8 @@ angular.module('RESTAPIDemo').controller('RESTAPIDemoController', function ($sco
     $scope.accessPrivateResource = function () {
         //$scope.token  ????
         var url = '/api/1.0/privatehello'
-        var config = {};
-        config.headers['Token'] = $scope.token;
-        $http.get(url, config).success(function (data) {
+        var headers = {'Authorization':'Bearer '+ $scope.token};
+        $http.get(url, headers).success(function (data) {
 
             $scope.apiReturn = data;
         });

@@ -15,9 +15,10 @@ def before_api_request():
     if request.path == "/api/1.0/tokenauth":
             return None
 
-    if request.json is None:
-        return errors.bad_request('Invalid JSON in body.')
-    token = request.json.get('token')
+    # if request.json is None:
+    #     return errors.bad_request('Invalid JSON in body.')
+    # token = request.json.get('token')
+    token = request.headers['Cookie']
     if not token:
         return errors.unauthorized('Authentication token not provided.')
 
